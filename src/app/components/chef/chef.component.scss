@@ -1,0 +1,60 @@
+.container-fluid {
+  padding: 0;
+}
+.separate {
+  display: block;
+  border-bottom: 1px solid #000;
+  height: 10px;
+  width: 600px;
+}
+.custom-scroll {
+  max-height: 550px;
+  overflow-y: auto;
+}
+.product-image {
+  width: 50px;
+  height: 50px;
+}
+
+.search-container {
+  margin-bottom: 10px;
+}
+
+.search-input {
+  border-radius: 20px;
+}
+
+.product-item {
+  display: flex;
+  align-items: center;
+}
+
+.product-image {
+  max-width: 50px;
+  margin-right: 10px;
+}
+
+.product-info {
+  font-size: 16px;
+}
+
+.product-name {
+  font-weight: bold;
+}
+
+.product-category {
+  color: #888;
+}
+.btn-search {
+  margin-left: 10px;
+  border-radius: 10px;
+  font-size: 14px;
+  background-color: rgb(1, 123, 254);
+  color: white;
+  border: none;
+  transition: filter 0.3s;
+}
+.btn-search:hover {
+  background-color: #0056b3; /* Thay đổi màu nền khi di chuột vào */
+  color: #f0f0f0; /* Mờ đi button khi di chuột vào */
+}

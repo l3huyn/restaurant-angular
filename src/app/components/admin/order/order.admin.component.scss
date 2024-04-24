@@ -1,0 +1,67 @@
+.page-number {
+  cursor: pointer;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  margin: 0 2px;
+  border-radius: 3px;
+}
+
+// .page-number.active {
+//   background-color: $shopapp-color !important;
+//   color: #fff;
+//   border-color: $shopapp-color !important;
+// }
+
+.btn.btn-primary {
+  margin-left: 10px;
+}
+.container-fluid {
+  background-color: white;
+  padding-left: 0 !important; /* Remove left padding */
+  padding-right: 0 !important; /* Remove right padding */
+  height: 100vh;
+}
+
+/* Cải thiện cấu trúc của form */
+.form-inline .form-group {
+  margin-right: 10px;
+}
+
+/* Cải thiện cấu trúc của bảng */
+.table {
+  width: 100%;
+}
+
+.table th,
+.table td {
+  text-align: center;
+}
+
+/* Cải thiện kiểu của phân trang */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination .page-link {
+  color: #007bff;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  padding: 6px 12px;
+  margin-right: 5px;
+}
+
+.pagination .page-link:hover {
+  z-index: 2;
+  color: #0056b3;
+  background-color: #e9ecef;
+  border-color: #dee2e6;
+}
+
+.pagination .page-item.active .page-link {
+  z-index: 1;
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}

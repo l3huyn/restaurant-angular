@@ -1,0 +1,139 @@
+<div class="container m-2">
+  <div class="card col-4 mb-3 mt-3">
+    <div class="card-header bg-success text-white">DOANH THU HÔM NAY</div>
+    <div class="card-body">
+      <h5 class="card-title">
+        {{
+          revenue_today != null
+            ? revenue_today.toLocaleString("vi-VN", {
+                style: "currency",
+                currency: "VND"
+              })
+            : "0đ"
+        }}
+      </h5>
+    </div>
+  </div>
+
+  <form class="form-inline" #filterForm="ngForm" style="margin-bottom: 10px">
+    <div class="d-flex align-items-center">
+      <div class="form-group mr-2">
+        <label for="startDate" class="mr-2">Từ ngày:</label>
+        <input
+          type="date"
+          class="form-control"
+          [(ngModel)]="startDate"
+          name="startDate"
+          id="startDate"
+        />
+      </div>
+      <div class="form-group mr-2" style="margin-left: 5px">
+        <label for="endDate" class="mr-2">Đến ngày:</label>
+        <input
+          type="date"
+          class="form-control"
+          [(ngModel)]="endDate"
+          name="endDate"
+          id="endDate"
+        />
+      </div>
+      <button
+        type="submit"
+        class="btn btn-primary ml-2"
+        (click)="getRevenueByDateRange(startDate, endDate)"
+        style="margin-top: 23px; margin-left: 5px"
+      >
+        Lọc
+      </button>
+    </div>
+  </form>
+
+  <div class="row mt-2 mb-3" *ngIf="orders && orders.length > 0">
+    <div class="col-md-12">
+      <div class="revenue" *ngIf="this.revenue_by_date_range != null">
+        <span style="font-size: 24px" class="text-danger"
+          ><strong>Doanh thu: </strong>
+          {{
+            this.revenue_by_date_range.toLocaleString("vi-VN", {
+              style: "currency",
+              currency: "VND"
+            })
+          }}</span
+        >
+      </div>
+      <span
+        class="separate"
+        style="margin-bottom: 20px; margin-top: 10px"
+      ></span>
+      <h4>Đơn hàng tương ứng</h4>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Bàn số:</th>
+            <th>Ngày đặt</th>
+            <th>Tình trạng</th>
+            <th>Phương thức thanh toán</th>
+            <th>Giảm giá</th>
+            <th>Giá sau giảm</th>
+            <th>Địa chỉ giao hàng</th>
+            <th>Tên nhân viên</th>
+            <th>Tổng tiền</th>
+            <th>Tùy chọn</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of orders">
+            <td>{{ order.id }}</td>
+            <td>{{ order.tableNumber }}</td>
+            <td>{{ order.orderDate | date }}</td>
+            <td>{{ order.status }}</td>
+
+            <td>{{ order.paymentMethod }}</td>
+            <td>
+              {{
+                order.discount.toLocaleString("vi-VN", {
+                  style: "currency",
+                  currency: "VND"
+                })
+              }}
+            </td>
+            <td>
+              {{
+                order.theDiscountedPrice.toLocaleString("vi-VN", {
+                  style: "currency",
+                  currency: "VND"
+                })
+              }}
+            </td>
+            <td>{{ order.shippingAddress }}</td>
+            <td>{{ order.employeeName }}</td>
+            <td class="text-danger" style="font-weight: bold">
+              {{
+                order.totalMoney.toLocaleString("vi-VN", {
+                  style: "currency",
+                  currency: "VND"
+                })
+              }}
+            </td>
+
+            <td>
+              <div style="display: flex; gap: 10px">
+                <button
+                  (click)="viewDetails(order)"
+                  class="btn btn-primary"
+                  style="white-space: nowrap"
+                >
+                  <i class="fa-solid fa-pen-to-square"></i>
+                </button>
+                <button class="btn btn-danger" (click)="deleteOrder(order.id)">
+                  <i class="fa-solid fa-trash-can"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

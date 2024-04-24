@@ -1,0 +1,86 @@
+<div class="container-fluid">
+  <header
+    class="p-1"
+    style="background: linear-gradient(to bottom, #18a5a7, #b6c0c5)"
+  >
+    <div class="row">
+      <div class="col-6">
+        <div class="header p-2 d-flex align-items-center">
+          <img
+            style="height: 90%"
+            src="https://as2.ftcdn.net/v2/jpg/05/28/27/35/1000_F_528273528_7E7eRRF70AVuAVm3xGsxszURwb5uCqvF.webp"
+            alt=""
+          />
+          <div class="desc m-3">
+            <span class="fs-6 fw-bold font-monospace">Lee's Restaunrant</span>
+            <br />
+            <span class="font-monospace">Hotpot & Drink</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div
+          class="header d-flex align-items-center"
+          style="float: right; margin-right: 15px"
+        >
+          <img
+            class="rounded-circle"
+            style="height: 80%"
+            src="https://scontent.fsgn2-5.fna.fbcdn.net/v/t39.30808-6/338414829_155128720640364_6284011705228340904_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=3635dc&_nc_ohc=i_uEcCUcab0AX-aYGcQ&_nc_ht=scontent.fsgn2-5.fna&oh=00_AfCN3zNTL1wLtLqh_-HNys9aBAOpfNrFa6LtBjytuQcR2A&oe=65DD55EF"
+            alt=""
+          />
+          <ng-container *ngIf="userResponse">
+            <span class="p-2 mx-1">{{ userResponse.fullname }} </span>
+            <i
+              class="fa-solid fa-right-from-bracket mx-2"
+              style="font-size: 20px"
+              (click)="logout()"
+            ></i>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="row">
+    <nav id="sidebar" class="col-md-2 col-lg-2 d-md-block bg-light sidebar">
+      <div class="position-sticky">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" (click)="showAdminComponent('revenues')">
+              <i class="fa-solid fa-coins icon"></i>Doanh thu
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="showAdminComponent('orders')">
+              <i class="fab fa-first-order icon"></i>Đơn hàng
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="showAdminComponent('categories')">
+              <i class="fa-solid fa-list icon"></i>Danh mục sản phẩm
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="showAdminComponent('products')">
+              <i class="fab fa-codepen icon"></i>Sản phẩm
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="showAdminComponent('dining_tables')">
+              <i class="fa-solid fa-table icon"></i>Bàn ăn
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="showAdminComponent('users')">
+              <i class="fa-solid fa-user icon"></i>Nhân viên
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="col-md-10 col-lg-10 overflow-auto">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

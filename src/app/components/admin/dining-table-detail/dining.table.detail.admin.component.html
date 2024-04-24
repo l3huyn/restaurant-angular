@@ -1,0 +1,37 @@
+<div class="container">
+  <h2>Giao diện</h2>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group mb-3">
+        <label class="mb-1" for="tableNumber"
+          ><strong>Số bàn: </strong>(ex. Bàn số 1)</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          id="tableNumber"
+          name="tableNumber"
+          [(ngModel)]="diningTableResponse.table_number"
+        />
+      </div>
+      <div class="form-group">
+        <label class="mb-1" for="capacity"><strong>Sức chứa:</strong></label>
+        <input
+          type="number"
+          class="form-control"
+          id="capacity"
+          name="capacity"
+          min="0"
+          [(ngModel)]="diningTableResponse.capacity"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col">
+      <button class="btn btn-primary btn-block" (click)="saveDiningTable()">
+        Lưu
+      </button>
+    </div>
+  </div>
+</div>

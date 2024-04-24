@@ -1,0 +1,103 @@
+<div class="container">
+  <h1>Order Details</h1>
+
+  <div
+    class="row"
+    style="
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 20px;
+      margin-bottom: 20px;
+    "
+  >
+    <!-- Phần hiển thị thông tin đơn hàng -->
+    <div
+      class="col-md-6"
+      style="border-right: 1px solid #ccc; padding-right: 20px"
+    >
+      <h3 style="margin-bottom: 20px">Thông tin đơn hàng</h3>
+      <p><strong>ID:</strong> {{ orderResponse.id }}</p>
+      <p><strong>Bàn:</strong> {{ orderResponse.tableNumber }}</p>
+      <p><strong>Họ tên:</strong>{{ orderResponse.fullName }}</p>
+      <p><strong>Điện thoại: </strong> {{ orderResponse.phoneNumber }}</p>
+      <p><strong>Ghi chú:</strong> {{ orderResponse.note }}</p>
+      <p><strong>Ngày đặt:</strong> {{ orderResponse.orderDate }}</p>
+      <p><strong>Tình trạng:</strong> {{ orderResponse.status }}</p>
+      <p>
+        <strong>Tổng tiền:</strong>
+        {{
+          orderResponse.totalMoney.toLocaleString("vi-VN", {
+            style: "currency",
+            currency: "VND"
+          })
+        }}
+      </p>
+      <p>
+        <strong>Phương thức thanh toán:</strong>
+        {{ orderResponse.paymentMethod }}
+      </p>
+      <p>
+        <strong>Giảm giá:</strong>
+        {{
+          orderResponse.discount.toLocaleString("vi-VN", {
+            style: "currency",
+            currency: "VND"
+          })
+        }}
+      </p>
+      <p>
+        <strong>Giá sau giảm:</strong>
+        {{
+          orderResponse.theDiscountedPrice.toLocaleString("vi-VN", {
+            style: "currency",
+            currency: "VND"
+          })
+        }}
+      </p>
+      <p>
+        <strong>Địa chỉ ship:</strong>
+        {{ orderResponse.shippingAddress }}
+      </p>
+      <p>
+        <strong>Nhân viên lên đơn:</strong>
+        {{ orderResponse.employeeName }}
+      </p>
+    </div>
+    <!-- Phần hiển thị chi tiết đơn hàng -->
+    <div class="col-md-6" style="padding-left: 20px">
+      <h3 style="margin-bottom: 20px">Chi tiết đơn hàng</h3>
+      <table class="table table-bordered" style="margin-top: 20px">
+        <thead>
+          <tr>
+            <th scope="col">Sản phẩm</th>
+            <th scope="col">Giá</th>
+            <th scope="col">Số lượng</th>
+            <th scope="col">Tổng</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let orderDetail of orderDetails">
+            <td>{{ orderDetail.productName }}</td>
+            <td>
+              {{
+                orderDetail.price.toLocaleString("vi-VN", {
+                  style: "currency",
+                  currency: "VND"
+                })
+              }}
+            </td>
+            <td>{{ orderDetail.numberOfProducts }}</td>
+            <td>
+              {{
+                orderDetail.totalMoney.toLocaleString("vi-VN", {
+                  style: "currency",
+                  currency: "VND"
+                })
+              }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+.container-fluid {
+  padding: 0;
+}
+
+.separate {
+  display: block;
+  border-bottom: 1px solid #000;
+  height: 10px;
+  width: 600px;
+}
+a {
+  text-decoration: none; /* Tắt gạch dưới */
+  color: inherit; /* Giữ màu chữ mặc định của phần tử cha */
+}
+
+.occupied_table {
+  background-color: #f08080 !important;
+}

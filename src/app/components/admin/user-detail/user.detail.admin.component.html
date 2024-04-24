@@ -1,0 +1,101 @@
+<div class="container">
+  <h2 class="mb-4">Thông tin nhân viên</h2>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group mb-3">
+        <label class="mb-1" for="fullName"><strong>Họ tên:</strong></label>
+        <input
+          type="text"
+          class="form-control"
+          id="fullName"
+          name="fullname"
+          [(ngModel)]="userResponse.fullname"
+        />
+      </div>
+      <div class="form-group mb-3">
+        <label class="mb-1" for="position"><strong>Vị trí:</strong></label>
+        <select
+          class="form-control"
+          id="position"
+          [(ngModel)]="userResponse.position"
+          name="position"
+        >
+          <option
+            [value]="'Server'"
+            [selected]="userResponse.position === 'Server'"
+          >
+            Phục vụ
+          </option>
+          <option
+            [value]="'Cashier'"
+            [selected]="userResponse.position === 'Cashier'"
+          >
+            Thu ngân
+          </option>
+          <option
+            [value]="'Chef'"
+            [selected]="userResponse.position === 'Chef'"
+          >
+            Đầu bếp
+          </option>
+        </select>
+      </div>
+      <div class="form-group mb-3">
+        <label class="mb-1" for="phone_number"><strong>SĐT:</strong></label>
+        <input
+          type="text"
+          class="form-control"
+          id="phone_number"
+          name="phone_number"
+          [(ngModel)]="userResponse.phone_number"
+        />
+      </div>
+      <div class="form-group mb-3">
+        <label class="mb-1" for="email"><strong>Email:</strong></label>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          name="email"
+          [(ngModel)]="userResponse.email"
+        />
+      </div>
+      <div class="form-group mb-3">
+        <label class="mb-1" for="address"><strong>Địa chỉ:</strong></label>
+        <input
+          type="text"
+          class="form-control"
+          id="address"
+          name="address"
+          [(ngModel)]="userResponse.address"
+        />
+      </div>
+      <div class="form-group mb-3">
+        <label class="mb-1" for="salary"><strong>Lương cơ bản:</strong></label>
+        <input
+          type="number"
+          class="form-control"
+          id="salary"
+          name="salary"
+          min="0"
+          [(ngModel)]="userResponse.salary"
+        />
+      </div>
+      <div class="form-group mb-3">
+        <label class="mb-1" for="password"><strong>Mật khẩu:</strong></label>
+        <input
+          type="text"
+          class="form-control"
+          id="password"
+          name="password"
+          [(ngModel)]="userResponse.password"
+        />
+      </div>
+      <div class="form-group mb-3">
+        <button class="btn btn-primary btn-block" (click)="saveUser()">
+          Lưu
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

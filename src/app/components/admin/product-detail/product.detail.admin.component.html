@@ -1,0 +1,110 @@
+<div class="container">
+  <h2 class="mb-4">Thông tin sản phẩm</h2>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group mb-3">
+        <label class="mb-1" for="name"><strong>Tên sản phẩm:</strong></label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          name="name"
+          [(ngModel)]="productResponse.name"
+        />
+      </div>
+      <div class="form-group mb-3">
+        <label class="mb-1" for="thumbnail"><strong>Thumbnail:</strong></label>
+        <div class="d-flex align-items-center">
+          <img
+            *ngIf="productResponse.thumbnail"
+            [src]="productResponse.thumbnail"
+            alt="thumbnail"
+            class="img-thumbnail mr-3"
+            style="max-width: 100px; max-height: 100px"
+            name="thumbnail"
+          />
+          <input
+            type="file"
+            class="form-control-file"
+            id="thumbnail"
+            style="width: auto"
+            name="thumbnail"
+            (change)="onFileSelected($event)"
+          />
+        </div>
+      </div>
+
+      <div class="form-group mb-3">
+        <label class="mb-1" for="productPrice"><strong>Giá:</strong></label>
+        <input
+          type="text"
+          class="form-control"
+          id="productPrice"
+          name="price"
+          [(ngModel)]="productResponse.price"
+        />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group mb-3">
+        <label class="mb-1" for="statusSelect"
+          ><strong>Tình trạng:</strong></label
+        >
+        <select
+          class="form-control"
+          id="statusSelect"
+          [(ngModel)]="productResponse.status"
+          name="status"
+        >
+          <option
+            [value]="'available'"
+            [selected]="productResponse.status === 'available'"
+          >
+            Còn bán
+          </option>
+          <option
+            [value]="'unavailable'"
+            [selected]="productResponse.status === 'unavailable'"
+          >
+            Ngưng
+          </option>
+        </select>
+      </div>
+      <div class="form-group mb-3">
+        <label class="mb-1" for="productQuantitySold"
+          ><strong>Số lượng bán:</strong></label
+        >
+        <input
+          type="text"
+          class="form-control"
+          id="productQuantitySold"
+          name="quantity_sold"
+          [(ngModel)]="productResponse.quantity_sold"
+        />
+      </div>
+      <div class="form-group mb-3">
+        <label class="mb-1" for="category_id"
+          ><strong>Danh mục sản phẩm:</strong></label
+        >
+        <select
+          [(ngModel)]="selectedCategory"
+          class="form-control access-right"
+          id="category_id"
+          name="category_id"
+          (ngModelChange)="updateCategoryId($event)"
+        >
+          <option *ngFor="let category of categories" [ngValue]="category.id">
+            {{ category.name }}
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col">
+      <button class="btn btn-primary btn-block" (click)="saveProduct()">
+        Lưu
+      </button>
+    </div>
+  </div>
+</div>

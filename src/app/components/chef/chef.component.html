@@ -1,0 +1,92 @@
+<div class="container-fluid">
+  <app-header></app-header>
+  <body>
+    <div class="container">
+      <div class="row mt-4">
+        <div class="col-lg-2 col-md-2 col-sm-12">
+          <p style="font-size: 20px"><strong>Thông tin đơn hàng</strong></p>
+          <div *ngFor="let message of messages">{{ message }}</div>
+
+          <div class="list-group" *ngFor="let order of orders">
+            <div
+              class="list-group-item mt-2"
+              (click)="showOrderDetail(order.id)"
+            >
+              <p class="m-0">
+                <strong>Đơn từ</strong>: {{ order.tableNumber }}
+              </p>
+              <p class="m-0">{{ order.orderDate | date }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <p style="font-size: 20px">
+            <Strong>Chi tiết đơn đặt món:</Strong> {{ tableNumber }}
+          </p>
+          <div class="list-group mt-3 custom-scroll">
+            <div
+              *ngFor="let orderDetail of orderDetails"
+              class="list-group-item"
+            >
+              <div class="d-flex w-100 justify-content-between">
+                <p class="mb-1">{{ orderDetail.productName }}</p>
+                <p class="mb-1">x{{ orderDetail.numberOfProducts }}</p>
+              </div>
+            </div>
+          </div>
+          <button
+            *ngIf="orderDetails.length > 0"
+            class="btn btn-success mt-3"
+            (click)="completeOrder()"
+            style="width: 100%"
+          >
+            Hoàn thành đơn hàng
+          </button>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12">
+          <p style="font-size: 20px"><strong>Danh sách sản phẩm</strong></p>
+          <div class="d-flex col-5 mb-3" style="width: 100%; height: 50px">
+            <input
+              type="text"
+              class="search-input p-2"
+              placeholder="Tìm sản phẩm"
+              [(ngModel)]="keyword"
+              style="border-radius: 10px; border: 1px solid #ccc"
+            />
+            <select
+              class="product-category p-2"
+              [(ngModel)]="selectedCategoryId"
+              style="
+                border-radius: 10px;
+                margin-left: 6px;
+                border: 1px solid #ccc;
+              "
+            >
+              <option [value]="0">Tất cả</option>
+              <option *ngFor="let category of categories" [value]="category.id">
+                {{ category.name }}
+              </option>
+            </select>
+            <button class="btn-search" (click)="searchProducts()">
+              Tìm kiếm
+            </button>
+          </div>
+          <ul class="list-group custom-scroll">
+            <li class="list-group-item" *ngFor="let product of products">
+              <div class="product-item">
+                <img
+                  src="{{ product.thumbnail }}"
+                  alt="{{ product.name }}"
+                  class="product-image"
+                />
+                <div class="product-info">
+                  <span class="product-name">{{ product.name }}</span>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</div>

@@ -1,0 +1,26 @@
+<div class="container">
+  <h1 class="mt-5 mb-4">Chỉnh sửa danh mục</h1>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="categoryName" style="margin-bottom: 10px"
+          ><strong>Tên danh mục:</strong></label
+        >
+        <input
+          type="text"
+          class="form-control"
+          id="categoryName"
+          [(ngModel)]="categoryResponse.name"
+          name="name"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col">
+      <button class="btn btn-primary btn-block" (click)="saveCategory()">
+        Lưu
+      </button>
+    </div>
+  </div>
+</div>
